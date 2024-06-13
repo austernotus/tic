@@ -1,0 +1,16 @@
+#board{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: bisque;
+    max-width:600px;
+    justify-content: center;
+    align-items: center;
+}
+
+.square{
+    display: flex;
+    background-color: azure;
+    width:33%;
+    height:100px;
+    margin:5px;
+}
