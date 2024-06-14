@@ -1,6 +1,5 @@
 const boardDiv = document.getElementById("board");
 let round;
-const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
 const gameboard = (function (){
     let gameBoardArray;
@@ -60,6 +59,7 @@ const playRound = function (){
         }
     };
     const checkWin = () => {
+        const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
         return winConditions.some(condition => {
             const [a,b,c] = condition;
             if(currentBoard[a] &&
@@ -74,7 +74,7 @@ const playRound = function (){
             return false;
         })
     }
-    return{placeMark, checkWin}
+    return{placeMark}
 }
 
 const player1 = newPlayer("Player 1", "X")
