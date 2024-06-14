@@ -37,9 +37,7 @@ const playRound = function (){
     const changeBoardSpace = (index, mark) =>{
         currentBoard[index] = mark;
         boardDiv.children[index].textContent = mark;
-        setTimeout(() => {
-            hasWon = checkWin();
-        }, 100); 
+        hasWon = checkWin();
 
     }
     const placeMark = (spotIndex) => {
