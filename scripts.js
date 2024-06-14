@@ -31,6 +31,7 @@ function newPlayer(name, mark){
 
 const playRound = function (){
     let playerTurn = 1;
+    let hasWon = false
     let currentBoard = gameboard.getGameBoard()
     console.log(currentBoard)
     const isEmptySquare = (index) => currentBoard[index] === "";
@@ -39,10 +40,13 @@ const playRound = function (){
         currentBoard[index] = mark;
         boardDiv.children[index].textContent = mark;
         console.log(currentBoard);
-        checkWin()
+        hasWon = checkWin()
 
     }
     const placeMark = (spotIndex) => {
+        if(hasWon){
+            return;
+        }
         if(!isEmptySquare(spotIndex)){
             return;
         }
@@ -56,7 +60,7 @@ const playRound = function (){
         }
     };
     const checkWin = () => {
-        winConditions.some(condition => {
+        return winConditions.some(condition => {
             const [a,b,c] = condition;
             if(currentBoard[a] &&
                 currentBoard[a] === 
@@ -70,7 +74,7 @@ const playRound = function (){
             return false;
         })
     }
-    return{placeMark}
+    return{placeMark, checkWin}
 }
 
 const player1 = newPlayer("Player 1", "X")
