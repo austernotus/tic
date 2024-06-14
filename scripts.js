@@ -32,14 +32,14 @@ const playRound = function (){
     let playerTurn = 1;
     let hasWon = false
     let currentBoard = gameboard.getGameBoard()
-    console.log(currentBoard)
     const isEmptySquare = (index) => currentBoard[index] === "";
 
     const changeBoardSpace = (index, mark) =>{
         currentBoard[index] = mark;
         boardDiv.children[index].textContent = mark;
-        console.log(currentBoard);
-        hasWon = checkWin()
+        setTimeout(() => {
+            hasWon = checkWin();
+        }, 100); 
 
     }
     const placeMark = (spotIndex) => {
@@ -68,7 +68,7 @@ const playRound = function (){
                 currentBoard[b] ===
                 currentBoard[c]
             ){
-                console.log("WIN!")
+                alert(`Player ${playerTurn} wins!`)
                 return true
             }
             return false;
